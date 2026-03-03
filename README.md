@@ -1,6 +1,16 @@
-Connect 4 AI
-============
+# Analysis and Reflection
 
-* This little project implements a MCTS (Monte-Carlo tree search) for connect 4
-* Just launch the **main.py** and you will be able to play against the AI.
-* To play you have to input the column number (between 0 and 6).
+## Overall Setup
+This project compares two agents built from the same Connect4 MCTS base: a pure MCTS agent and an MCTS agent that uses an LLM policy prior during selection and rollout choice. In battle mode, both sides use the same `iterations_per_move`, the LLM side alternates first and second player roles, and each setting runs 50 games. The reported runs cover 50, 100, 200, 400, and 800 iterations per move, for 250 games total. The LLM guidance is queried through Ollama with a capped budget (`LLM_POLICY_MAX_CALLS=256`) and shallow depth limit (`LLM_POLICY_MAX_DEPTH=6`), while the pure side uses uniform policy and standard UCT behavior.
+
+## LLM Performance
+Across all 250 games, the LLM-guided agent won 182 games, the pure MCTS agent won 66, and 2 were draws, which is a 72.8% LLM win rate over all games and 73.4% when draws are excluded. By iteration setting, LLM win rate was 82% at 50 iterations, 72% at 100, 70% at 200, 76% at 400, and 64% at 800 (66.7% non-draw at 800). This supports the pattern that the pure MCTS side improves as search budget increases, even though the LLM-guided side remains ahead in every tested setting. Side effects are visible as well: when the LLM played first it won 77.6% of games, and when it played second it won 68% games.
+
+## Performance Tradeoffs
+The main tradeoff is between stronger baseline search and the fixed amount of LLM guidance. As iterations increase, the search tree grows substantially (`cache_entries` from 34,622 at 50 iterations to 553,605 at 800), and pure MCTS gets more chances to recover from weaker early move ordering. At the same time, the LLM call count stays fixed at 256 per run, so its relative influence drops as each move gets more simulation budget. The 400-iteration result is better than 200 despite the overall downward trend, which suggests run-to-run variance from a single 50-game sample per setting.
+
+## Comparison to RAP Framework
+The design is similar to RAP in that language-model output is used to bias a search process instead of choosing actions directly. In this implementation, the LLM provides a move distribution prior that is combined with MCTS via PUCT, and the final decision still comes from tree statistics. The difference from a full RAP-style pipeline is that there is no explicit reasoning trace, no separate reward or verifier model, and no iterative thought-action-reflection loop. This makes the system a lightweight LLM-guided search method rather than a full reasoning-and-planning framework.
+
+## Possible Improvements for LLM integration
+The next improvement is to increase statistical confidence by running multiple seeds per iteration budget and reporting confidence intervals, since each current point is a single 50-game run. The LLM budget can also be made adaptive so calls are focused on high-uncertainty states instead of a fixed global cap, and depth limits can be tuned so the model is used where move ordering matters most. A stronger evaluation can compare against solved or near-solved play (for example deeper MCTS or alpha-beta reference play) and add ablations for prompt format, policy normalization weight, and rollout policy choice to isolate which LLM components contribute most of the win rate.
