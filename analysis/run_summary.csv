@@ -1,0 +1,6 @@
+file,iterations_per_move,games,llm_wins,pure_wins,draws,llm_win_rate,llm_non_draw_win_rate,llm_calls,cache_entries,cache_hits,llm_first_games,llm_first_wins,llm_first_win_rate,llm_second_games,llm_second_wins,llm_second_win_rate
+output5.txt,50,50,41,9,0,0.8200,0.8200,256,34622,3038,25,24,0.9600,25,17,0.6800
+output4.txt,100,50,36,14,0,0.7200,0.7200,256,79045,7497,25,21,0.8400,25,15,0.6000
+output2.txt,200,50,35,15,0,0.7000,0.7000,256,147961,19174,25,18,0.7200,25,17,0.6800
+output3.txt,400,50,38,12,0,0.7600,0.7600,256,298440,47504,25,17,0.6800,25,21,0.8400
+output.txt,800,50,32,16,2,0.6400,0.6667,256,553605,105270,25,17,0.6800,25,15,0.6000

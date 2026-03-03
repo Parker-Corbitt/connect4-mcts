@@ -1,0 +1,58 @@
+game=1/50 llm_side=first winner=-1
+game=2/50 llm_side=second winner=1
+game=3/50 llm_side=first winner=0
+game=4/50 llm_side=second winner=-1
+game=5/50 llm_side=first winner=-1
+game=6/50 llm_side=second winner=1
+game=7/50 llm_side=first winner=-1
+game=8/50 llm_side=second winner=-1
+game=9/50 llm_side=first winner=1
+game=10/50 llm_side=second winner=1
+game=11/50 llm_side=first winner=0
+game=12/50 llm_side=second winner=1
+game=13/50 llm_side=first winner=-1
+game=14/50 llm_side=second winner=1
+game=15/50 llm_side=first winner=1
+game=16/50 llm_side=second winner=1
+game=17/50 llm_side=first winner=1
+game=18/50 llm_side=second winner=1
+game=19/50 llm_side=first winner=-1
+game=20/50 llm_side=second winner=1
+game=21/50 llm_side=first winner=-1
+game=22/50 llm_side=second winner=1
+game=23/50 llm_side=first winner=1
+game=24/50 llm_side=second winner=-1
+game=25/50 llm_side=first winner=-1
+game=26/50 llm_side=second winner=-1
+game=27/50 llm_side=first winner=1
+game=28/50 llm_side=second winner=-1
+game=29/50 llm_side=first winner=-1
+game=30/50 llm_side=second winner=-1
+game=31/50 llm_side=first winner=-1
+game=32/50 llm_side=second winner=-1
+game=33/50 llm_side=first winner=-1
+game=34/50 llm_side=second winner=-1
+game=35/50 llm_side=first winner=-1
+game=36/50 llm_side=second winner=-1
+game=37/50 llm_side=first winner=-1
+game=38/50 llm_side=second winner=-1
+game=39/50 llm_side=first winner=-1
+game=40/50 llm_side=second winner=1
+game=41/50 llm_side=first winner=-1
+game=42/50 llm_side=second winner=1
+game=43/50 llm_side=first winner=1
+game=44/50 llm_side=second winner=1
+game=45/50 llm_side=first winner=-1
+game=46/50 llm_side=second winner=1
+game=47/50 llm_side=first winner=-1
+game=48/50 llm_side=second winner=1
+game=49/50 llm_side=first winner=-1
+game=50/50 llm_side=second winner=1
+
+Summary
+games=50
+iterations_per_move=800
+llm_wins=32
+pure_wins=16
+draws=2
+llm_policy_stats={'llm_calls': 256, 'cache_entries': 553605, 'cache_hits': 105270}
