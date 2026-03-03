@@ -27,7 +27,7 @@ if __name__ == '__main__':
         # test AI with real play
         grid = create_grid()
         round = 0
-        training_time = 2000
+        training_time = 10000
         node = mcts
         utils_print(grid)
         while True:
